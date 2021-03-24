@@ -145,7 +145,7 @@ export default <NuxtConfig>{
           token: '/oauth2mockserver/token',
           userInfo: '/oauth2mockserver/userinfo'
         },
-        audience: '^/',
+        responibility: '^http://localhost:8080/',
         responseType: 'code',
         grantType: 'authorization_code',
         clientId: 'test-client'
