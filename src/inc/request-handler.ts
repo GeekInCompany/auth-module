@@ -100,17 +100,17 @@ export class RequestHandler {
 
   private _needToken(config): boolean {
     const options = this.scheme.options
-    const responibilities: string | string[] | undefined = (options as any)
-      .responibility
+    const responsibilities: string | string[] | undefined = (options as any)
+      .responsibility
     let needToken: boolean = false
 
-    if (responibilities) {
-      if (typeof responibilities === 'object') {
-        needToken = Object.values(responibilities).some(
-          (responibility: string) => config.url.match(responibility) != null
+    if (responsibilities) {
+      if (typeof responsibilities === 'object') {
+        needToken = Object.values(responsibilities).some(
+          (responsibility: string) => config.url.match(responsibility) != null
         )
       } else {
-        needToken = config.url.match(responibilities) != null
+        needToken = config.url.match(responsibilities) != null
       }
     }
 
