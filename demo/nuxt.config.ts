@@ -118,12 +118,16 @@ export default <NuxtConfig>{
         grantType: 'password'
       },
       oauth2mock: {
+        token: {
+          global: false
+        },
         scheme: 'oauth2',
         endpoints: {
           authorization: '/oauth2mockLogin',
           token: '/oauth2mockserver/token',
           userInfo: '/oauth2mockserver/userinfo'
         },
+        audience: '^/',
         responseType: 'code',
         grantType: 'authorization_code',
         clientId: 'test-client'
