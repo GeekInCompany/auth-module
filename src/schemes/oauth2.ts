@@ -61,6 +61,7 @@ export interface Oauth2SchemeOptions
   acrValues: string
   audience: string
   autoLogout: boolean
+  logoutRedirectArg: 'logout_uri' | string
 }
 
 const DEFAULTS: SchemePartialOptions<Oauth2SchemeOptions> = {
@@ -305,9 +306,10 @@ export class Oauth2Scheme<
   logout(): void {
     if (this.options.endpoints.logout) {
       const opts = {
-        client_id: this.options.clientId + '',
-        logout_uri: this.logoutRedirectURI
+        client_id: this.options.clientId + ''
+        // logout_uri: this.logoutRedirectURI
       }
+      opts[this.options.logoutRedirectArg] = this.logoutRedirectURI
       const url = this.options.endpoints.logout + '?' + encodeQuery(opts)
       window.location.replace(url)
     }
