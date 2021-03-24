@@ -100,7 +100,21 @@ export class RequestHandler {
 
   private _needToken(config): boolean {
     const options = this.scheme.options
+    const audiences: string | string[] | undefined = (options as any).audience
+    let needToken: boolean = false
+
+    if (audiences) {
+      if (typeof audiences === 'object') {
+        needToken = Object.values(audiences).some(
+          (audience: string) => config.url.match(audience) != null
+        )
+      } else {
+        needToken = config.url.match(audiences) != null
+      }
+    }
+
     return (
+      needToken ||
       options.token.global ||
       Object.values(options.endpoints).some((endpoint: HTTPRequest | string) =>
         typeof endpoint === 'object'
