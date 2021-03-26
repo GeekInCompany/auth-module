@@ -1,5 +1,5 @@
 {
-  "name": "@nuxtjs/auth",
+  "name": "@nuxtjs/auth-geek",
   "version": "5.0.0",
   "description": "Authentication module for Nuxt.js",
   "repository": "nuxt-community/auth-module",
@@ -90,8 +90,5 @@
   },
   "peerDependencies": {
     "vue": "*"
-  },
-  "publishConfig": {
-    "registry": "https://nexus.geekinbusiness.de/repository/npm-geek/"
   }
 }
